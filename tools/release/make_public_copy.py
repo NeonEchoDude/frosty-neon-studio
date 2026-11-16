@@ -3,7 +3,8 @@
     python tools/release/make_public_copy.py <empty or new output folder>
 
 What it does:
-  * copies only files tracked by Git (so nothing ignored or untracked leaks out);
+  * copies only files as they are in the last commit (so nothing ignored, untracked or edited but not committed
+    leaks out);
   * leaves out the private working files listed in EXCLUDE (agent instructions, the session status
     log, handover notes, reports with absolute paths) and the private-strings file itself;
   * replaces README.md with tools/release/PUBLIC_README.md;
@@ -25,7 +26,6 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -57,9 +57,22 @@ GENERIC_PATTERNS = {
 ALLOWED_EMAILS = {b"developer@vrchat.com", b"noreply@anthropic.com"}
 
 
-def tracked_files() -> list[str]:
-    out = subprocess.run(["git", "-C", str(ROOT), "ls-files", "-z"], capture_output=True, check=True).stdout
-    return [f for f in out.decode("utf-8").split("\0") if f]
+def committed_files() -> list[tuple[str, str, str]]:
+    """(path, mode, blob id) of every file in the last commit. The copy is made from the commit, not from the disk,
+    so an edit that was never committed (Unity rewrites settings files on its own) can't slip into it."""
+    out = subprocess.run(["git", "-C", str(ROOT), "ls-tree", "-r", "-z", "HEAD"], capture_output=True, check=True).stdout
+    rows = []
+    for entry in out.decode("utf-8").split("\0"):
+        if entry:
+            meta, path = entry.split("\t", 1)
+            mode, kind, blob = meta.split(" ")
+            if kind == "blob":
+                rows.append((path, mode, blob))
+    return rows
+
+
+def blob_bytes(blob: str) -> bytes:
+    return subprocess.run(["git", "-C", str(ROOT), "cat-file", "blob", blob], capture_output=True, check=True).stdout
 
 
 def excluded(path: str) -> bool:
@@ -157,15 +170,17 @@ def main() -> int:
         return 1
     replacements = private_strings()
     copied, skipped = 0, []
-    for rel in tracked_files():
-        source = ROOT / rel
-        # A tracked symbolic link could point anywhere on this PC; its target is never copied.
-        if excluded(rel) or source.is_symlink() or not source.is_file():
+    public_readme = None
+    for rel, mode, blob in committed_files():
+        if rel == "tools/release/PUBLIC_README.md":
+            public_readme = blob_bytes(blob)
+        # A committed symbolic link (120000) or submodule could point anywhere on this PC; never copied.
+        if excluded(rel) or mode not in ("100644", "100755"):
             skipped.append(rel)
             continue
         target = out / rel
         target.parent.mkdir(parents=True, exist_ok=True)
-        data = source.read_bytes()
+        data = blob_bytes(blob)
         if rel.lower().endswith(".fbx"):
             data = strip_fbx_source_path(data)
         elif Path(rel).suffix.lower() in TEXT_SUFFIX:
@@ -179,7 +194,15 @@ def main() -> int:
             data = text.encode("utf-8", errors="surrogateescape")
         target.write_bytes(data)
         copied += 1
-    shutil.copyfile(HERE / "PUBLIC_README.md", out / "README.md")
+    if public_readme is None:
+        print("tools/release/PUBLIC_README.md is not committed; commit it first.")
+        return 1
+    (out / "README.md").write_bytes(public_readme)
+    dirty = subprocess.run(["git", "-C", str(ROOT), "status", "--porcelain", "--untracked-files=no"],
+                           capture_output=True, check=True).stdout.decode("utf-8").strip()
+    if dirty:
+        print("Note: these files have changes that are not committed; the copy has their committed version:")
+        print("\n".join("  " + line for line in dirty.splitlines()[:20]))
 
     hits = scan(out, [find for find, _ in replacements]) + image_hits(out)
     print(f"Copied {copied} files to {out}; left out {len(skipped)}: {', '.join(skipped[:12])}{' ...' if len(skipped) > 12 else ''}")
