@@ -1,0 +1,52 @@
+{
+  "table": "humanoid_bones",
+  "table_version": 1,
+  "description": "Unity humanoid bone slots, which of them are needed, and bone-name spellings the audit recognises. Used only to report; nothing is renamed. See docs/HUMANOID_BONE_REPORT.md.",
+  "sources": {
+    "slot_names": "Unity 2022.3 Scripting API, HumanBodyBones enum (read 2026-11-13).",
+    "vrchat_required": "VRChat SDK 3.10.6, VRCSdkControlPanelAvatarBuilder.AnalyzeIK (source read 2026-11-13): errors if head, hands or feet are unmapped, or if any of Neck, Shoulders, Hips, Spine or Chest is unmapped. Consistent with the Rig Requirements web page, which is marked out of date.",
+    "unity_required": "Verified 2026-11-13 in the Unity 2022.3.22f1 Editor: HumanTrait.RequiredBone returned exactly these 15 slots, and HumanTrait.BoneCount is 55, the number of slots this table expands to. Measured by Unity/FrostyAvatarProject/Assets/Editor/FrostyNeon/FbxImportProbe.cs.",
+    "aliases": "Common naming conventions (Unity slot names, Blender .L/.R names, Mixamo, English MMD-style). A heuristic, not a standard."
+  },
+
+  "unity_required_status": "verified in Unity 2022.3.22f1 on 2026-11-13 (HumanTrait.RequiredBone)",
+
+  "side_words": {"left": ["left"], "right": ["right"]},
+  "side_letters": {"left": "l", "right": "r"},
+
+  "bones": [
+    {"slot": "Hips",       "sided": false, "parent": null,       "unity_required": true,  "vrchat_required": true,  "aliases": ["hips", "hip", "pelvis"]},
+    {"slot": "Spine",      "sided": false, "parent": "Hips",     "unity_required": true,  "vrchat_required": true,  "aliases": ["spine"]},
+    {"slot": "Chest",      "sided": false, "parent": "Spine",    "unity_required": false, "vrchat_required": true,  "aliases": ["chest", "spine1"]},
+    {"slot": "UpperChest", "sided": false, "parent": "Chest",    "unity_required": false, "vrchat_required": false, "aliases": ["upperchest", "spine2"]},
+    {"slot": "Neck",       "sided": false, "parent": "Chest",    "unity_required": false, "vrchat_required": true,  "aliases": ["neck"]},
+    {"slot": "Head",       "sided": false, "parent": "Neck",     "unity_required": true,  "vrchat_required": true,  "aliases": ["head"]},
+    {"slot": "Jaw",        "sided": false, "parent": "Head",     "unity_required": false, "vrchat_required": false, "aliases": ["jaw"]},
+    {"slot": "Eye",        "sided": true,  "parent": "Head",     "unity_required": false, "vrchat_required": false, "aliases": ["eye"]},
+    {"slot": "Shoulder",   "sided": true,  "parent": "Chest",    "unity_required": false, "vrchat_required": true,  "aliases": ["shoulder", "clavicle", "collar"]},
+    {"slot": "UpperArm",   "sided": true,  "parent": "Shoulder", "unity_required": true,  "vrchat_required": true,  "aliases": ["upperarm", "uparm", "arm"]},
+    {"slot": "LowerArm",   "sided": true,  "parent": "UpperArm", "unity_required": true,  "vrchat_required": true,  "aliases": ["lowerarm", "forearm", "elbow"]},
+    {"slot": "Hand",       "sided": true,  "parent": "LowerArm", "unity_required": true,  "vrchat_required": true,  "aliases": ["hand", "wrist"]},
+    {"slot": "UpperLeg",   "sided": true,  "parent": "Hips",     "unity_required": true,  "vrchat_required": true,  "aliases": ["upperleg", "thigh", "upleg", "leg"]},
+    {"slot": "LowerLeg",   "sided": true,  "parent": "UpperLeg", "unity_required": true,  "vrchat_required": true,  "aliases": ["lowerleg", "shin", "calf", "knee", "leg"]},
+    {"slot": "Foot",       "sided": true,  "parent": "LowerLeg", "unity_required": true,  "vrchat_required": true,  "aliases": ["foot", "ankle"]},
+    {"slot": "Toes",       "sided": true,  "parent": "Foot",     "unity_required": false, "vrchat_required": false, "aliases": ["toes", "toe", "toebase"]}
+  ],
+
+  "fingers": {
+    "parent": "Hand",
+    "names": {
+      "Thumb": ["thumb"],
+      "Index": ["index", "indexfinger"],
+      "Middle": ["middle", "middlefinger"],
+      "Ring": ["ring", "ringfinger"],
+      "Little": ["little", "littlefinger", "pinky", "pinkie"]
+    },
+    "segments": {
+      "Proximal": ["proximal", "1", "01"],
+      "Intermediate": ["intermediate", "2", "02"],
+      "Distal": ["distal", "3", "03"]
+    },
+    "optional_prefixes": ["", "hand"]
+  }
+}

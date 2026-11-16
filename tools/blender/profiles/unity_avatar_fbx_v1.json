@@ -1,0 +1,93 @@
+{
+  "profile": "unity_avatar_fbx",
+  "profile_version": 1,
+  "description": "Blender -> FBX settings for a skinned avatar bound for Unity/VRChat. Every exporter option is stated; none is left to Blender's defaults. See docs/FBX_EXPORT_PROFILE.md for the reasoning and the Unity verification plan.",
+  "verified_with_blender": "5.2.3 LTS",
+
+  "export_scene_fbx": {
+    "use_selection": false,
+    "use_visible": false,
+    "use_active_collection": false,
+    "collection": "",
+
+    "axis_forward": "-Z",
+    "axis_up": "Y",
+    "use_space_transform": true,
+    "bake_space_transform": false,
+
+    "global_scale": 1.0,
+    "apply_unit_scale": true,
+    "apply_scale_options": "FBX_SCALE_ALL",
+
+    "object_types": ["ARMATURE", "MESH"],
+    "use_mesh_modifiers": false,
+    "use_mesh_modifiers_render": false,
+    "mesh_smooth_type": "OFF",
+    "colors_type": "SRGB",
+    "prioritize_active_color": false,
+    "use_subsurf": false,
+    "use_mesh_edges": false,
+    "use_tspace": false,
+    "use_triangles": false,
+    "use_custom_props": false,
+
+    "add_leaf_bones": false,
+    "primary_bone_axis": "Y",
+    "secondary_bone_axis": "X",
+    "use_armature_deform_only": false,
+    "armature_nodetype": "NULL",
+
+    "bake_anim": false,
+    "bake_anim_use_all_bones": true,
+    "bake_anim_use_nla_strips": true,
+    "bake_anim_use_all_actions": true,
+    "bake_anim_force_startend_keying": true,
+    "bake_anim_step": 1.0,
+    "bake_anim_simplify_factor": 1.0,
+
+    "path_mode": "AUTO",
+    "embed_textures": false,
+    "batch_mode": "OFF",
+    "use_batch_own_dir": false,
+    "use_metadata": true
+  },
+
+  "expected_fbx_global_settings": {
+    "UpAxis": 1,
+    "UpAxisSign": 1,
+    "FrontAxis": 2,
+    "FrontAxisSign": 1,
+    "CoordAxis": 0,
+    "CoordAxisSign": 1,
+    "UnitScaleFactor": 100.0
+  },
+
+  "roundtrip_import_scene_fbx": {
+    "use_manual_orientation": false,
+    "axis_forward": "-Z",
+    "axis_up": "Y",
+    "global_scale": 1.0,
+    "bake_space_transform": false,
+    "use_custom_normals": true,
+    "colors_type": "SRGB",
+    "use_image_search": false,
+    "use_alpha_decals": false,
+    "decal_offset": 0.0,
+    "use_anim": false,
+    "anim_offset": 1.0,
+    "use_subsurf": false,
+    "use_custom_props": false,
+    "use_custom_props_enum_as_string": true,
+    "ignore_leaf_bones": false,
+    "force_connect_children": false,
+    "automatic_bone_orientation": false,
+    "primary_bone_axis": "Y",
+    "secondary_bone_axis": "X",
+    "use_prepost_rot": true,
+    "mtl_name_collision_mode": "MAKE_UNIQUE"
+  },
+
+  "roundtrip_tolerance_m": 0.0001,
+
+  "strip_source_path": true
+}

@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frosty Neon Studio: your avatar into VRChat, without learning Unity</title>
+  <meta name="description" content="A free Windows app that checks your Booth, VRoid or FBX avatar with VRChat's own rules, explains what it finds, fixes import settings, makes a Quest version and uploads it privately.">
+  <link rel="canonical" href="https://neonechodude.github.io/frosty-neon-studio/">
+  <meta name="theme-color" content="#0D0F1E">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Link previews. Crawlers don't run JavaScript, so these are full addresses. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Frosty Neon Studio">
+  <meta property="og:title" content="Frosty Neon Studio">
+  <meta property="og:description" content="Your avatar into VRChat, without learning Unity. Free and open source, for Windows.">
+  <meta property="og:url" content="https://neonechodude.github.io/frosty-neon-studio/">
+  <meta property="og:image" content="https://neonechodude.github.io/frosty-neon-studio/assets/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Frosty Neon Studio logo, a six-pointed crystal with a cyan core, and the line: Your avatar into VRChat, without learning Unity.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Frosty Neon Studio">
+  <meta name="twitter:description" content="Your avatar into VRChat, without learning Unity. Free and open source, for Windows.">
+  <meta name="twitter:image" content="https://neonechodude.github.io/frosty-neon-studio/assets/social-card.png">
+  <meta name="twitter:image:alt" content="The Frosty Neon Studio logo and the line: Your avatar into VRChat, without learning Unity.">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="motion.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="bar">
+    <div class="wrap bar-inner">
+      <a class="brand" href="#top"><img src="assets/logo.svg" alt="Frosty Neon Studio" width="211" height="34"></a>
+      <nav aria-label="Sections">
+        <a href="#how">How it works</a>
+        <a href="#safety">Safety</a>
+        <a href="#limits">Limits</a>
+        <a href="#faq">FAQ</a>
+        <a data-link="repo" href="#">GitHub</a>
+      </nav>
+      <a class="btn btn-small" data-link="download" href="#">Download</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <h1 id="hero-title">Your avatar into VRChat, <span>without learning Unity.</span></h1>
+        <div class="hero-side">
+          <p class="lead">Drop in the avatar you bought on Booth, made in VRoid Studio or got as a model. Frosty Neon Studio checks it with VRChat's own rules, tells you in plain words what it found, fixes what it safely can, makes a Quest version and uploads it to your account, privately.</p>
+          <div class="actions">
+            <a class="btn" data-link="download" href="#">Download for Windows</a>
+            <a class="btn btn-ghost" data-link="guide" href="#">Read the setup guide</a>
+          </div>
+          <p class="meta">Free and open source &middot; Windows 10 and 11 &middot; Beta, v<span data-version>0.1.0</span></p>
+        </div>
+      </div>
+
+      <figure class="wrap window">
+        <div class="window-frame">
+          <img src="assets/app-window.webp" width="1135" height="632" fetchpriority="high"
+               alt="The Frosty Neon Studio window. Left: a Your PC card saying All set, and a list of avatars with an Add an avatar file button. Right: the FrostyNeonBot robot, the headline Looking fresh! Nothing to fix, green PC Ready and Quest Ready badges, front, side and back pictures with a dashed eye-height line, and buttons to fix, make a Quest version and upload.">
+          <ol class="pins" aria-hidden="true">
+            <li style="--x: 25%; --y: 16.5%">1</li>
+            <li style="--x: 22.9%; --y: 43.2%">2</li>
+            <li style="--x: 49.7%; --y: 26.7%">3</li>
+            <li style="--x: 82.7%; --y: 35.4%">4</li>
+            <li style="--x: 95.4%; --y: 70.7%">5</li>
+            <li style="--x: 55%; --y: 77.7%">6</li>
+          </ol>
+        </div>
+        <figcaption>
+          <ol class="legend">
+            <li><span><b>Your PC.</b> What's installed, and what to install next, in order.</span></li>
+            <li><span><b>Your avatars.</b> Drop a file anywhere on the window, or add one here.</span></li>
+            <li><span><b>The verdict,</b> in plain words, with PC and Quest checked separately.</span></li>
+            <li><span><b>Front, side and back.</b> The dashed line is where your eyes will be.</span></li>
+            <li><span><b>Fix it for me</b> and <b>Make a Quest version</b> light up only when needed.</span></li>
+            <li><span><b>Upload</b> to your own account. Always private.</span></li>
+          </ol>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="section" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <p class="label">How it works</p>
+        <h2 id="how-title">Four steps, in one window</h2>
+        <ol class="flow">
+          <li class="step reveal">
+            <div class="step-text">
+              <span class="step-no" aria-hidden="true">01</span>
+              <h3>Drop the file</h3>
+              <p>A Booth package, a VRoid export or a plain model. Drag it anywhere on the window, or click <i>Add an avatar file</i>.</p>
+              <ul class="types" aria-label="Accepted files">
+                <li><code>.unitypackage</code></li><li><code>.vrm</code></li><li><code>.fbx</code></li>
+              </ul>
+              <p class="note">A package with scripts lists them and asks before importing. A VRoid file shows its creator's terms first.</p>
+            </div>
+            <figure class="step-pic">
+              <img src="assets/step-pick.webp" width="308" height="416" loading="lazy" decoding="async"
+                   alt="The Pick your avatar card: a pink Add an avatar file button, the accepted file types, and a list of avatars in the project.">
+            </figure>
+          </li>
+
+          <li class="step reveal">
+            <div class="step-text">
+              <span class="step-no" aria-hidden="true">02</span>
+              <h3>It checks, the way VRChat does</h3>
+              <p>The VRChat SDK's own validation runs in the background. Each finding says what it means for you in VRChat and whether you need to do anything. PC and Quest are separate checks: passing one isn't proof of the other.</p>
+            </div>
+            <figure class="step-pic stack">
+              <img src="assets/step-check.webp" width="668" height="338" loading="lazy" decoding="async"
+                   alt="The check result: Looking fresh! Nothing to fix, PC Ready and Quest Ready badges, and three pictures of the robot with the eye line. Below: 1.77 m tall, eyes at 1.66 m.">
+              <img src="assets/step-findings.webp" width="476" height="184" loading="lazy" decoding="async"
+                   alt="Findings in plain words: Good to go, with a few notes below. Good to know: Part of the model is scaled, usually harmless. Shorter than average, fine if that is how the avatar is meant to be.">
+              <figcaption>Findings for another avatar, in the Unity Avatar Guide window, which shows the same check.</figcaption>
+            </figure>
+          </li>
+
+          <li class="step reveal">
+            <div class="step-text">
+              <span class="step-no" aria-hidden="true">03</span>
+              <h3>Fix it, and make a Quest version</h3>
+              <p><i>Fix it for me</i> changes only the Unity import settings VRChat's upload needs. Your avatar's own files are not edited, and <i>Undo the fix</i> puts the settings back.</p>
+              <p><i>Make a Quest version</i> builds a separate copy with Quest materials and smaller textures. Your PC avatar stays as it is. <i>Show Quest look</i> shows the Quest pictures before you upload.</p>
+            </div>
+            <figure class="step-pic">
+              <img src="assets/step-fix.webp" width="722" height="46" loading="lazy" decoding="async"
+                   alt="A row of buttons: Fix it for me, Undo the fix, Make a Quest version, Show Quest look, Remove the Quest version. They are dimmed here because this avatar needs none of them.">
+              <figcaption>Dimmed here: this avatar needed neither.</figcaption>
+            </figure>
+          </li>
+
+          <li class="step reveal">
+            <div class="step-text">
+              <span class="step-no" aria-hidden="true">04</span>
+              <h3>Upload, privately</h3>
+              <p>The app asks first. Unity opens only for VRChat's sign-in and the final <i>Upload</i> button, and the avatar goes to your account as private. Then in VRChat: <i>Avatars &gt; Uploaded</i>, and put it on.</p>
+            </div>
+            <figure class="step-pic">
+              <img src="assets/step-upload.webp" width="272" height="46" loading="lazy" decoding="async"
+                   alt="Two buttons: Upload for PC in pink and Upload for Quest in cyan.">
+            </figure>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section setup" id="setup" aria-labelledby="setup-title">
+      <div class="wrap split">
+        <div>
+          <p class="label">Before you start</p>
+          <h2 id="setup-title">Set up once</h2>
+          <p class="muted">Unity has to be installed because VRChat uploads need it. You don't have to learn it: Creator Companion installs it, and the app runs it in the background.</p>
+        </div>
+        <ol class="checklist">
+          <li><b>Install VRChat Creator Companion.</b> VRChat's free installer for Unity 2022.3.22f1 and the VRChat SDK. For Quest, also add <i>Android Build Support</i> in Unity Hub.</li>
+          <li><b>Download Frosty Neon Studio</b> and unzip it to a short path, such as <code>C:\FrostyNeon</code>.</li>
+          <li><b>Add its Unity project to Creator Companion</b> (<i>Projects &gt; Add Existing Project</i>), open it once in Unity, then close Unity.</li>
+          <li><b>Double-click <code>Frosty Neon Studio.cmd</code>.</b> It checks your PC and says what's missing, if anything.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="safety" aria-labelledby="safety-title">
+      <div class="wrap split">
+        <div>
+          <p class="label">Safety</p>
+          <h2 id="safety-title">Nothing happens behind your back</h2>
+        </div>
+        <ul class="points">
+          <li>Nothing is uploaded until you confirm it in VRChat's upload box, and uploads are always private.</li>
+          <li>Your avatar's own files are never edited. Changes go into Unity import settings and new files beside them, and can be undone or removed.</li>
+          <li>Packages with scripts are not imported without asking, and you see which scripts they are.</li>
+          <li>A VRoid creator's terms are shown before the avatar is set up, and again before upload when they limit who may use it.</li>
+          <li>It installs nothing by itself. It tells you what to install and where to get it.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="limits" aria-labelledby="limits-title">
+      <div class="wrap split">
+        <div>
+          <p class="label">Known limits</p>
+          <h2 id="limits-title">What it can't promise yet</h2>
+          <p class="muted">This is a beta. If something looks wrong, a report helps the next person.</p>
+        </div>
+        <ul class="points points-limits">
+          <li>Tested on the included FrostyNeonBot, free test avatars, VRoid Studio exports and generated models. Not yet on many Booth avatars.</li>
+          <li>Quest versions use VRChat's mobile shaders, so see-through and cut-out parts can look different from PC. They have been uploaded, but not yet widely checked on a headset.</li>
+          <li>VRoid files must be exported as VRM&nbsp;0.0. VRM&nbsp;1.0 isn't supported yet.</li>
+          <li>Its checks repeat some of the VRChat SDK's build checks. The SDK's own build is the final word.</li>
+          <li>Windows only.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="wrap split">
+        <div>
+          <p class="label">Questions</p>
+          <h2 id="faq-title">FAQ</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Is it free?</summary>
+            <p>Yes. The code is open source under the MIT licence. The starter robot, FrostyNeonBot, is CC BY 4.0: use it, change it, upload your own version, and credit "FrostyNeonBot by NeonEchoDude".</p>
+          </details>
+          <details>
+            <summary>Do I still need Unity?</summary>
+            <p>It has to be installed, because VRChat uploads go through it. Creator Companion installs it for you, and Frosty Neon Studio runs it in the background. You only see it for VRChat's sign-in and the upload confirmation.</p>
+          </details>
+          <details>
+            <summary>Does it work for Quest?</summary>
+            <p>It checks Quest separately and can make a Quest version with Quest materials and smaller textures. Some see-through or cut-out parts look different on Quest; <i>Show Quest look</i> shows you before you upload.</p>
+          </details>
+          <details>
+            <summary>Can I upload any avatar I bought?</summary>
+            <p>Check the creator's terms. Many Booth avatars allow uploading for your own use. VRoid files carry their terms inside, and the app shows them. Only upload avatars that are yours or that you have permission to use.</p>
+          </details>
+          <details>
+            <summary>Will other people see my avatar?</summary>
+            <p>Uploads are private: other players see it when you wear it, but it isn't listed for anyone else to pick.</p>
+          </details>
+          <details>
+            <summary>Is this made by VRChat?</summary>
+            <p>No. It's a fan-made tool, not made, endorsed or supported by VRChat Inc.</p>
+          </details>
+          <details data-needs="issues">
+            <summary>Something went wrong. Where do I get help?</summary>
+            <p><span data-needs="discord">Ask in the <a data-link="discord" href="#">Discord</a>. </span><span data-needs="issues"><a data-link="issues" href="#">Report a problem on GitHub</a>. </span>Click <i>Copy details</i> in the app and paste them: they have what a helper needs.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title" data-needs="download">
+      <div class="wrap closing-inner">
+        <h2 id="closing-title">Bring your avatar.</h2>
+        <div class="actions">
+          <a class="btn" data-link="download" href="#">Download for Windows</a>
+          <a class="btn btn-ghost" data-link="discord" href="#">Join the Discord</a>
+          <a class="btn btn-ghost" data-link="issues" href="#">Report a problem</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <img src="assets/icon.svg" alt="" width="36" height="36" loading="lazy">
+      <div>
+        <p>Frosty Neon Studio v<span data-version>0.1.0</span><span data-needs="repo"> &middot; <a data-link="repo" href="#">Source on GitHub</a> &middot; <a data-link="license" href="#">MIT licence</a></span></p>
+        <p class="fine">Fan-made, and not affiliated with VRChat Inc. "VRChat" is a trademark of VRChat Inc. FrostyNeonBot by NeonEchoDude, CC BY 4.0. This site uses no cookies, trackers or outside fonts.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="links.js"></script>
+</body>
+</html>

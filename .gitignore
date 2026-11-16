@@ -1,0 +1,37 @@
+# Blender backups and caches
+*.blend1
+*.blend2
+__pycache__/
+*.py[cod]
+
+# Unity generated state
+Library/
+Temp/
+Obj/
+Logs/
+UserSettings/
+MemoryCaptures/
+Builds/
+
+# Editors and OS
+.vs/
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+
+# Avatars from other creators used for testing: keep out of Git (size and licences)
+Assets/Avatars/TestCandidates/
+
+# The owner's personal avatars (their likeness): keep out of Git and public releases
+Assets/Avatars/Personal/
+
+# Avatars people audit or export with frosty.ps1 (their own work): keep out of Git. Only the starter robot is tracked.
+/Assets/Avatars/Source/*
+!/Assets/Avatars/Source/.gitkeep
+!/Assets/Avatars/Source/FrostyNeonBot.blend
+!/Assets/Avatars/Source/FrostyNeonBot_audit_report.json
+/Assets/Avatars/Exports/*/*
+!/Assets/Avatars/Exports/*/.gitkeep
+!/Assets/Avatars/Exports/PC/FrostyNeonBot.fbx
+!/Assets/Avatars/Exports/PC/FrostyNeonBot_export_report.json

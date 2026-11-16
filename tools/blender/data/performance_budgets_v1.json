@@ -1,0 +1,55 @@
+{
+  "table": "performance_budgets",
+  "table_version": 1,
+  "description": "VRChat avatar performance-rank maximums for the statistics the Blender audit can estimate. Used to report an estimated rank per platform; nothing is changed. See docs/PERFORMANCE_BUDGETS.md.",
+  "source": {
+    "page": "https://creators.vrchat.com/avatars/avatar-performance-ranking-system/",
+    "read_on": "2026-11-13",
+    "page_last_updated": "2026-10-21",
+    "note": "Numbers copied from the 'PC Limits' and 'Mobile Limits' tables. Re-read the page before relying on them; VRChat changes these limits."
+  },
+
+  "ranks": ["Excellent", "Good", "Medium", "Poor"],
+  "rank_above_all_limits": "Very Poor",
+
+  "statistics": {
+    "triangles": "Triangles of all mesh objects, as authored (modifiers not applied), excluding zero-area triangles, which do not reach Unity's imported mesh.",
+    "skinned_meshes": "Mesh objects with an Armature modifier or shape keys; expected to import as Skinned Mesh Renderers.",
+    "basic_meshes": "All other mesh objects; expected to import as Mesh Renderers.",
+    "material_slots": "Per mesh, the material slots actually used by at least one face (at least 1 for a mesh with faces).",
+    "bones": "Bones of all armatures in the scene."
+  },
+
+  "platforms": {
+    "pc": {
+      "label": "PC",
+      "default_target_rank": "Good",
+      "target_reason": "VRChat's page: 'Aim for Good ranking.'",
+      "limits": {
+        "triangles":      {"Excellent": 32000, "Good": 70000, "Medium": 70000, "Poor": 70000},
+        "skinned_meshes": {"Excellent": 1,     "Good": 2,     "Medium": 8,     "Poor": 16},
+        "basic_meshes":   {"Excellent": 4,     "Good": 8,     "Medium": 16,    "Poor": 24},
+        "material_slots": {"Excellent": 4,     "Good": 8,     "Medium": 16,    "Poor": 32},
+        "bones":          {"Excellent": 75,    "Good": 150,   "Medium": 256,   "Poor": 400}
+      }
+    },
+    "quest": {
+      "label": "Quest (VRChat 'Mobile Limits': Android, iOS and Meta Quest)",
+      "default_target_rank": "Medium",
+      "target_reason": "VRChat's page: on mobile the default Minimum Displayed Performance Rank is Medium, so Poor and Very Poor avatars are hidden by default.",
+      "limits": {
+        "triangles":      {"Excellent": 7500, "Good": 10000, "Medium": 15000, "Poor": 20000},
+        "skinned_meshes": {"Excellent": 1,    "Good": 1,     "Medium": 2,     "Poor": 2},
+        "basic_meshes":   {"Excellent": 1,    "Good": 1,     "Medium": 2,     "Poor": 2},
+        "material_slots": {"Excellent": 1,    "Good": 1,     "Medium": 2,     "Poor": 4},
+        "bones":          {"Excellent": 75,   "Good": 90,    "Medium": 150,   "Poor": 150}
+      }
+    }
+  },
+
+  "not_estimated": [
+    "Texture Memory", "Bounds Size", "PhysBones (components, transforms, colliders, collision checks)", "Contacts",
+    "Constraints", "Animators", "Lights", "Particle Systems", "Trail and Line Renderers", "Raycasts", "Cloth",
+    "Physics Colliders and Rigidbodies", "Audio Sources", "Face Tracking"
+  ]
+}

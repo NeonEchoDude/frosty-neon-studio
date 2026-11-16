@@ -1,0 +1,45 @@
+name: Bug report
+description: Something in Frosty Neon Studio didn't work as expected.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please don't attach avatars you bought (creators' terms usually forbid sharing them); a link to the shop page is enough.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of avatar?
+      options:
+        - Booth / creator package (.unitypackage)
+        - VRoid Studio (.vrm)
+        - Model (.fbx)
+        - Blender file (.blend)
+        - FrostyNeonBot (the included starter avatar)
+        - Not about a specific avatar
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details for helpers
+      description: In the app, open "Details for helpers" under the avatar's results, select all (Ctrl+A) and paste it here.
+      render: text
+  - type: textarea
+    id: log
+    attributes:
+      label: Activity log
+      description: The last 20 or so lines of the activity log at the bottom of the window (click it, Ctrl+A, Ctrl+C).
+      render: text
+  - type: input
+    id: where
+    attributes:
+      label: Where can the avatar be found? (optional)
+      description: A shop or download page, if it's public.
